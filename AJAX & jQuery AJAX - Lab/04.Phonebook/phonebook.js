@@ -1,4 +1,4 @@
-const URL = 'https://phonebook-1d3f5.firebaseio.com/phonebook';
+const URL = 'https://phonebook-nakov.firebaseio.com/phonebook';
 
 $('#btnLoad').on('click', loadData);
 $('#btnCreate').on('click', postData);
@@ -14,7 +14,7 @@ function loadData() {
         $('#phonebook').empty();
         for (let key in res) {
             if (res[key] !== null) {
-                let li = $(`<li>${res[key].name}: ${res[key].phone} </li>`).append($('<a href="#">[Delete]</a>')
+                let li = $(`<li>${res[key].name}: ${res[key].phone} </li>`).append($('<button>[Delete]</button>')
                     .click(function () {
                         $.ajax({
                             method: 'DELETE',
@@ -40,7 +40,7 @@ function postData() {
     }).then(createElement)
         .catch(loadError);
     function createElement() {
-        let li = $(`<li>${name}: ${phone} </li>`).append($('<a href="#">[Delete]</a>')
+        let li = $(`<li>${name}: ${phone} </li>`).append($('<button>[Delete]</button>')
             .click(function () {
                 $.ajax({
                     method: 'DELETE',
